@@ -7,7 +7,8 @@ from grams_mealbase.server.tables.people import People
 from grams_mealbase.server.tables.logins import Logins
 from grams_mealbase.server.tables.users import Users
 from grams_mealbase.server.tables.billing_units import BillingUnits
-
+from grams_mealbase.server.tables.food_admins import FoodAdmins
+from grams_mealbase.server.tables.royals import Royals
 @pytest.fixture(scope='function')
 def client(app):
     yield app.test_client()
@@ -59,6 +60,25 @@ def app():
         users[user['name']] = curr
         session.add(curr)
         session.commit()
+
+    # setup food admins
+    food_admins = {}
+    for admin in input_params['valid']['food admins']:
+        login = logins[admin['name']]
+        curr = FoodAdmins(login_id=login.id)
+        food_admins[admin['name']] = curr
+        session.add(curr)
+        session.commit()
+
+    # setup for royals
+    royals = {}
+    for royal in input_params['valid']['royals']:
+        login = logins[royal['name']]
+        curr = Royals(login_id=login.id)
+        royals[royal['name']] = curr
+        session.add(curr)
+        session.commit()
+
     
     yield app
 
