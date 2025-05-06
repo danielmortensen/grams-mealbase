@@ -28,8 +28,8 @@ def test_exists_food_admin_invalid_json(client):
 
 def test_exists_food_admin_empty_email(client):
     response = client.post('/auth/exists/food_admin/', json={'email': ''})
-    assert response.status_code == 401
-    assert response.json['message'] == 'Food Admin:  does not exist'
+    assert response.status_code == 400
+    assert response.json['message'] == 'missing fields: email'
 
 def test_exists_food_admin_none_email(client):
     response = client.post('/auth/exists/food_admin/', json={'email': None})

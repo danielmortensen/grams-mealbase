@@ -17,6 +17,8 @@ def require_json_fields(input_fields):
                 for curr_field in fields:
                     if not curr_field in inputs:
                         missing_fields.append(curr_field)
+                    elif inputs[curr_field] == '':
+                        missing_fields.append(curr_field)
 
                 if len(missing_fields) > 0:
                     error_string = "missing fields:"

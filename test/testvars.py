@@ -37,5 +37,9 @@ input_params = {'valid' : {
                                  'email' : 'doe.kevin@testnet.com'},
                                 {'name' : 'max doe',
                                  'email' : 'doe.max@testnet.com'}]
-               }
+               },
+               'temporary' : {'email': 'temp.user@testnet.com',
+                              'password': 'temp_password',
+                              'name': 'Temp User'
+                             },
 }

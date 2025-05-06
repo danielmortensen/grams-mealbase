@@ -24,8 +24,8 @@ def test_exists_user_invalid_json(client):
 
 def test_exists_user_empty_email(client):
     response = client.post('/auth/exists/user/', json={'email': ''})
-    assert response.status_code == 401
-    assert response.json['message'] == 'User  does not exist'
+    assert response.status_code == 400
+    assert response.json['message'] == 'missing fields: email'
 
 def test_exists_user_none_email(client):
     response = client.post('/auth/exists/user/', json={'email': None})

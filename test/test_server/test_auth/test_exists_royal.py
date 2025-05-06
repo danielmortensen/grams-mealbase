@@ -25,8 +25,8 @@ def test_exists_royal_invalid_json(client):
 
 def test_exists_royal_empty_email(client):
     response = client.post('/auth/exists/royal/', json={'email': ''})
-    assert response.status_code == 401
-    assert response.json['message'] == 'Royal:  does not exist'
+    assert response.status_code == 400
+    assert response.json['message'] == 'missing fields: email'
 
 def test_exists_royal_none_email(client):
     response = client.post('/auth/exists/royal/', json={'email': None})
